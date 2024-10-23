@@ -1,5 +1,4 @@
 <?php
-// Pengaturan session sama seperti di login
 ini_set('session.cookie_httponly', 1);
 ini_set('session.cookie_secure', 0);
 ini_set('session.use_only_cookies', 1);
@@ -16,10 +15,8 @@ session_set_cookie_params([
 session_name('hotspot_session');
 session_start();
 
-// Hapus semua data session
 $_SESSION = array();
 
-// Jika ingin menghancurkan session cookie juga
 if (ini_get('session.use_cookies')) {
     $params = session_get_cookie_params();
     setcookie(session_name(), '', time() - 42000,
@@ -28,7 +25,6 @@ if (ini_get('session.use_cookies')) {
     );
 }
 
-// Akhiri session
 session_destroy();
 
 // Redirect ke halaman login atau halaman lain setelah logout
