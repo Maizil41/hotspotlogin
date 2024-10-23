@@ -36,7 +36,6 @@ function insertRadcheck($username, $user) {
     require '../config/mysqli_db.php';
 
     try {
-        // Insert ke radcheck
         $stmt = $conn->prepare("INSERT INTO radcheck (username, attribute, op, value) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $username, $attribute, $op, $value);
         $attribute = "Auth-Type";
@@ -45,16 +44,14 @@ function insertRadcheck($username, $user) {
         $stmt->execute();
         $stmt->close();
 
-        // Insert ke radusergroup
         $stmt = $conn->prepare("INSERT INTO radusergroup (username, groupname, priority) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $username, $plan_name, $priority);
         $priority = "0";
         $stmt->execute();
         $stmt->close();
 
-        // Insert ke userinfo
         $stmt = $conn->prepare("INSERT INTO userinfo (username, firstname, lastname, email, department, company, workphone, homephone, mobilephone, address, city, state, country, zip, notes, changeuserinfo, portalloginpassword, creationdate, creationby) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssssssssssssssss", $username, $firstname, $lastname, $email, $department, $company, $workphone, $homephone, $mobilephone, $address, $city, $state, $country, $zip, $notes, $changeuserinfo, $portalloginpassword, $now, $creationby);
+        $stmt->bind_param("sssssssssssssssssss", $username, $firstname, $lastname, $email, $department, $company, $workphone, $homephone, $mobilephone, $address, $city, $state, $country, $zip, $notes, $changeuserinfo, $portalloginpassword, $now, $user);
         $firstname = '';
         $lastname = '';
         $email = '';
@@ -72,13 +69,11 @@ function insertRadcheck($username, $user) {
         $changeuserinfo = '0';
         $portalloginpassword = '';
         $now = date('Y-m-d H:i:s');
-        $creationby = 'administrator';
         $stmt->execute();
         $stmt->close();
 
-        // Insert ke userbillinfo
         $stmt = $conn->prepare("INSERT INTO userbillinfo (username, planName, contactperson, company, email, phone, address, city, state, country, zip, paymentmethod, cash, creditcardname, creditcardnumber, creditcardverification, creditcardtype, creditcardexp, notes, changeuserbillinfo, lead, coupon, ordertaker, billstatus, nextinvoicedue, billdue, postalinvoice, faxinvoice, emailinvoice, creationdate, creationby) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssssssssssssssssssssssssssss", $username, $plan_name, $user, $company, $email, $phone, $address, $city, $state, $country, $zip, $paymentmethod, $cash, $creditcardname, $creditcardnumber, $creditcardverification, $creditcardtype, $creditcardexp, $notes, $changeuserbillinfo, $lead, $coupon, $ordertaker, $billstatus, $nextinvoicedue, $billdue, $postalinvoice, $faxinvoice, $emailinvoice, $now, $creationby);
+        $stmt->bind_param("sssssssssssssssssssssssssssssss", $username, $plan_name, $user, $company, $email, $phone, $address, $city, $state, $country, $zip, $paymentmethod, $cash, $creditcardname, $creditcardnumber, $creditcardverification, $creditcardtype, $creditcardexp, $notes, $changeuserbillinfo, $lead, $coupon, $ordertaker, $billstatus, $nextinvoicedue, $billdue, $postalinvoice, $faxinvoice, $emailinvoice, $now, $user);
         $contactperson = '';
         $company = '';
         $email = '';
@@ -106,7 +101,6 @@ function insertRadcheck($username, $user) {
         $postalinvoice = '';
         $faxinvoice = '';
         $emailinvoice = '';
-        $creationby = 'administrator';
         $stmt->execute();
         $stmt->close();
 
