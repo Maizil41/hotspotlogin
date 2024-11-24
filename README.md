@@ -15,3 +15,5 @@
 <a href="https://www.youtube.com/@mutiara-wrt"><img src="https://img.shields.io/badge/Youtube--Channel-e02c2c?style=for-the-badge&logo=youtube&logoColor=white"></a>
 <a href="https://t.me/mutiara_wrt"><img src="https://img.shields.io/badge/Telegram--Groups-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"></a>
 </p>
+
+<hr>
